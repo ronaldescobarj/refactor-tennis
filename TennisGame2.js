@@ -9,6 +9,42 @@ var TennisGame2 = function(player1Name, player2Name) {
     this.player2Name = player2Name;
 };
 
+TennisGame2.prototype.assignPlayer1LiteralScore = function() {
+    switch(this.player1Score) {
+        case 0:
+            this.player1LiteralScore = "Love";
+            break;
+        case 1:
+            this.player1LiteralScore = "Fifteen";
+            break;
+        case 2:
+            this.player1LiteralScore = "Thirty";
+            break;
+        case 3:
+            this.player1LiteralScore = "Forty";
+            break;
+        default:
+    }
+}
+
+TennisGame2.prototype.assignPlayer2LiteralScore = function () {
+    switch (this.player2Score) {
+        case 0:
+            this.player2LiteralScore = "Love";
+            break;
+        case 1:
+            this.player2LiteralScore = "Fifteen";
+            break;
+        case 2:
+            this.player2LiteralScore = "Thirty";
+            break;
+        case 3:
+            this.player2LiteralScore = "Forty";
+            break;
+        default:
+    }
+}
+
 TennisGame2.prototype.getScore = function() {
     var literalScore = "";
 
@@ -25,48 +61,26 @@ TennisGame2.prototype.getScore = function() {
         literalScore = "Deuce";
 
     if (this.player1Score > 0 && this.player2Score === 0) {
-        if (this.player1Score === 1)
-            this.player1LiteralScore = "Fifteen";
-        if (this.player1Score === 2)
-            this.player1LiteralScore = "Thirty";
-        if (this.player1Score === 3)
-            this.player1LiteralScore = "Forty";
+        this.assignPlayer1LiteralScore();
 
         this.player2LiteralScore = "Love";
         literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
     }
     if (this.player2Score > 0 && this.player1Score === 0) {
-        if (this.player2Score === 1)
-            this.player2LiteralScore = "Fifteen";
-        if (this.player2Score === 2)
-            this.player2LiteralScore = "Thirty";
-        if (this.player2Score === 3)
-            this.player2LiteralScore = "Forty";
+        this.assignPlayer2LiteralScore();
 
         this.player1LiteralScore = "Love";
         literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
     }
 
     if (this.player1Score > this.player2Score && this.player1Score < 4) {
-        if (this.player1Score === 2)
-            this.player1LiteralScore = "Thirty";
-        if (this.player1Score === 3)
-            this.player1LiteralScore = "Forty";
-        if (this.player2Score === 1)
-            this.player2LiteralScore = "Fifteen";
-        if (this.player2Score === 2)
-            this.player2LiteralScore = "Thirty";
+        this.assignPlayer1LiteralScore();
+        this.assignPlayer2LiteralScore();
         literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
     }
     if (this.player2Score > this.player1Score && this.player2Score < 4) {
-        if (this.player2Score === 2)
-            this.player2LiteralScore = "Thirty";
-        if (this.player2Score === 3)
-            this.player2LiteralScore = "Forty";
-        if (this.player1Score === 1)
-            this.player1LiteralScore = "Fifteen";
-        if (this.player1Score === 2)
-            this.player1LiteralScore = "Thirty";
+        this.assignPlayer2LiteralScore();
+        this.assignPlayer1LiteralScore();
         literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
     }
 
