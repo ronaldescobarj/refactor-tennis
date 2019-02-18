@@ -87,18 +87,12 @@ TennisGame2.prototype.getScore = function() {
     return literalScore;
 };
 
-TennisGame2.prototype.setPlayer1Score = function(number) {
-    var i;
-    for (i = 0; i < number; i++) {
-        this.increasePlayer1ScoreBy1();
-    }
+TennisGame2.prototype.setPlayer1Score = function(newScore) {
+    this.player1Score = newScore;
 };
 
-TennisGame2.prototype.setPlayer2Score = function(number) {
-    var i;
-    for (i = 0; i < number; i++) {
-        this.increasePlayer2ScoreBy1();
-    }
+TennisGame2.prototype.setPlayer2Score = function (newScore) {
+    this.player2Score = newScore;
 };
 
 TennisGame2.prototype.increasePlayer1ScoreBy1 = function() {
