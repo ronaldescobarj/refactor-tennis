@@ -65,26 +65,19 @@ TennisGame2.prototype.getNameOfWinningPlayer = function() {
 
 TennisGame2.prototype.getScore = function() {
     var literalScore = "";
-
     this.assignPlayer1LiteralScore();
     this.assignPlayer2LiteralScore();
     literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
-
     if (this.areScoresEqual()) {
-        if (this.player1Score < 3) {
-            this.assignPlayer1LiteralScore();
+        if (this.player1Score < 3)
             literalScore = this.player1LiteralScore + "-All";
-        }
         else
             literalScore = "Deuce";
     }
-
     if (this.isAdvantage())
         literalScore = "Advantage " + this.getNameOfWinningPlayer();
-
     if (this.isWin())
         literalScore = "Win for " + this.getNameOfWinningPlayer();
-        
     return literalScore;
 };
 
