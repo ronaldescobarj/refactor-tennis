@@ -61,22 +61,17 @@ TennisGame2.prototype.getNameOfWinningPlayer = function() {
 TennisGame2.prototype.getScore = function() {
     var literalScore = "";
 
+    this.assignPlayer1LiteralScore();
+    this.assignPlayer2LiteralScore();
+    literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
+
     if (this.areScoresEqual()) {
         if (this.player1Score < 3) {
             this.assignPlayer1LiteralScore();
-            literalScore += this.player1LiteralScore + "-All";
+            literalScore = this.player1LiteralScore + "-All";
         }
         else
             literalScore = "Deuce";
-    }
-
-    if (this.player1Score > 0 && this.player2Score === 0
-        || this.player2Score > 0 && this.player1Score === 0
-        || this.player1Score > this.player2Score && this.player1Score < 4
-        || this.player2Score > this.player1Score && this.player2Score < 4) {
-        this.assignPlayer1LiteralScore();
-        this.assignPlayer2LiteralScore();
-        literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
     }
 
     if (this.isAdvantage())
