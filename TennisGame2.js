@@ -103,8 +103,8 @@ TennisGame2.prototype.increasePlayer2ScoreBy1 = function() {
     this.player2Score++;
 };
 
-TennisGame2.prototype.increaseScoreBy1 = function(player) {
-    if (player === this.player1Name)
+TennisGame2.prototype.increaseScoreBy1 = function(playerName) {
+    if (playerName === this.player1Name)
         this.increasePlayer1ScoreBy1();
     else
         this.increasePlayer2ScoreBy1();
