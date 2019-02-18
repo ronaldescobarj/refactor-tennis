@@ -45,10 +45,14 @@ TennisGame2.prototype.assignPlayer2LiteralScore = function () {
     }
 }
 
+TennisGame2.prototype.areScoresEqual = function() {
+    return this.player1Score === this.player2Score;
+}
+
 TennisGame2.prototype.getScore = function() {
     var literalScore = "";
 
-    if (this.player1Score === this.player2Score && this.player1Score < 3) {
+    if (this.areScoresEqual() && this.player1Score < 3) {
         if (this.player1Score === 0)
             literalScore = "Love";
         if (this.player1Score === 1)
@@ -57,7 +61,7 @@ TennisGame2.prototype.getScore = function() {
             literalScore = "Thirty";
         literalScore += "-All";
     }
-    if (this.player1Score === this.player2Score && this.player1Score > 2)
+    if (this.areScoresEqual() && this.player1Score > 2)
         literalScore = "Deuce";
 
     if (this.player1Score > 0 && this.player2Score === 0
