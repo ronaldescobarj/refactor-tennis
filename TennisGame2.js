@@ -53,13 +53,8 @@ TennisGame2.prototype.getScore = function() {
     var literalScore = "";
 
     if (this.areScoresEqual() && this.player1Score < 3) {
-        if (this.player1Score === 0)
-            literalScore = "Love";
-        if (this.player1Score === 1)
-            literalScore = "Fifteen";
-        if (this.player1Score === 2)
-            literalScore = "Thirty";
-        literalScore += "-All";
+        this.assignPlayer1LiteralScore();
+        literalScore += this.player1LiteralScore + "-All";
     }
     if (this.areScoresEqual() && this.player1Score > 2)
         literalScore = "Deuce";
