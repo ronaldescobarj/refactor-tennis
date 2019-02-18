@@ -52,12 +52,14 @@ TennisGame2.prototype.areScoresEqual = function() {
 TennisGame2.prototype.getScore = function() {
     var literalScore = "";
 
-    if (this.areScoresEqual() && this.player1Score < 3) {
-        this.assignPlayer1LiteralScore();
-        literalScore += this.player1LiteralScore + "-All";
+    if (this.areScoresEqual()) {
+        if (this.player1Score < 3) {
+            this.assignPlayer1LiteralScore();
+            literalScore += this.player1LiteralScore + "-All";
+        }
+        else
+            literalScore = "Deuce";
     }
-    if (this.areScoresEqual() && this.player1Score > 2)
-        literalScore = "Deuce";
 
     if (this.player1Score > 0 && this.player2Score === 0
         || this.player2Score > 0 && this.player1Score === 0
