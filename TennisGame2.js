@@ -60,13 +60,10 @@ TennisGame2.prototype.getScore = function() {
     if (this.player1Score === this.player2Score && this.player1Score > 2)
         literalScore = "Deuce";
 
-    if (this.player1Score > 0 && this.player2Score === 0 || this.player2Score > 0 && this.player1Score === 0) {
-        this.assignPlayer1LiteralScore();
-        this.assignPlayer2LiteralScore();
-        literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
-    }
-    
-    if (this.player1Score > this.player2Score && this.player1Score < 4 || this.player2Score > this.player1Score && this.player2Score < 4) {
+    if (this.player1Score > 0 && this.player2Score === 0
+        || this.player2Score > 0 && this.player1Score === 0
+        || this.player1Score > this.player2Score && this.player1Score < 4
+        || this.player2Score > this.player1Score && this.player2Score < 4) {
         this.assignPlayer1LiteralScore();
         this.assignPlayer2LiteralScore();
         literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
