@@ -54,6 +54,11 @@ TennisGame2.prototype.isAdvantage = function () {
         || this.player2Score > this.player1Score && this.player1Score >= 3;
 }
 
+TennisGame2.prototype.isWin = function() {
+    return this.player1Score >= 4 && this.player2Score >= 0 && (this.player1Score - this.player2Score) >= 2
+        || this.player2Score >= 4 && this.player1Score >= 0 && (this.player2Score - this.player1Score) >= 2;
+}
+
 TennisGame2.prototype.getNameOfWinningPlayer = function() {
     return this.player1Score >= this.player2Score ? this.player1Name : this.player2Name;
 }
@@ -76,14 +81,10 @@ TennisGame2.prototype.getScore = function() {
 
     if (this.isAdvantage())
         literalScore = "Advantage " + this.getNameOfWinningPlayer();
-     
 
-    if (this.player1Score >= 4 && this.player2Score >= 0 && (this.player1Score - this.player2Score) >= 2) {
-        literalScore = "Win for player1";
-    }
-    if (this.player2Score >= 4 && this.player1Score >= 0 && (this.player2Score - this.player1Score) >= 2) {
-        literalScore = "Win for player2";
-    }
+    if (this.isWin())
+        literalScore = "Win for " + this.getNameOfWinningPlayer();
+        
     return literalScore;
 };
 
