@@ -59,10 +59,10 @@ describe('TennisGame2', function () {
     var highestScore = Math.max(player1Score, player2Score);
     for (let i = 0; i < highestScore; i++) {
       if (i < player1Score) {
-        thisGame.wonPoint("player1");
+        thisGame.increaseScoreBy1("player1");
       }
       if (i < player2Score) {
-        thisGame.wonPoint("player2");
+        thisGame.increaseScoreBy1("player2");
       }
     }
     console.log("Expect game: " + player1Score.toString() + " - " + player2Score.toString() + "  RETURNS:  " + literalScore)
