@@ -63,17 +63,23 @@ TennisGame2.prototype.getNameOfWinningPlayer = function() {
     return this.player1Score >= this.player2Score ? this.player1Name : this.player2Name;
 }
 
-TennisGame2.prototype.getScore = function() {
-    var literalScore = "";
+TennisGame2.prototype.assignForEqualScores = function() {
+    if (this.player1Score < 3)
+        return this.player1LiteralScore + "-All";
+    else
+        return "Deuce";
+}
+
+TennisGame2.prototype.assignLiteralScoresToPlayers = function() {
     this.assignPlayer1LiteralScore();
     this.assignPlayer2LiteralScore();
-    literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
-    if (this.areScoresEqual()) {
-        if (this.player1Score < 3)
-            literalScore = this.player1LiteralScore + "-All";
-        else
-            literalScore = "Deuce";
-    }
+}
+
+TennisGame2.prototype.getScore = function() {
+    this.assignLiteralScoresToPlayers();
+    var literalScore = this.player1LiteralScore + "-" + this.player2LiteralScore;
+    if (this.areScoresEqual())
+        literalScore = this.assignForEqualScores();
     if (this.isAdvantage())
         literalScore = "Advantage " + this.getNameOfWinningPlayer();
     if (this.isWin())
